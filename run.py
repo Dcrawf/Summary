@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.scrolledtext import *
 from SummerTime import SummerTime
-tk = Tk()
+
 # Create GUI
 # Create Window
 # Build main window
@@ -48,8 +48,8 @@ def erase_output():
 
 
 def summer_time():
-    from SummerTime.parseers.plaintext import PlaintextParser
-    from SummerTime.nlp.tokenizers import Tokenizer
+    from sumy.parseers.plaintext import PlaintextParser
+    from sumy.nlp.tokenizers import Tokenizer
     text_format = entry.get('1.0', tk.END)
     # We can use this parse format for all three when we use raw strings
     parser_config = PlaintextParser.from_string(text_format, Tokenizer("english"))
