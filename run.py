@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.scrolledtext import *
 from SummerTime import SummerTime
+import pyttsx3
 
 # Create GUI
 # Create Window
@@ -46,6 +47,23 @@ def erase_input():
 def erase_output():
     output_display.delete('1.0', END)
 
+def speak_it():
+
+    engine = pyttax3.init()
+    #bcode Set Voice
+    #Voice IDS pulled from engine.getProperty('voices)
+    #These will be system specific
+    en_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0"
+
+    #use female english voice
+    engine.setProperty('voice', en_voice_id)
+    engine.say('Hello, This is my voice.')
+    #bcode END set voice
+    rate = engine.getProperty('rate')
+    #This decreases the speed of speech by 50%
+    engine.setProperty("rate", rate - 50)
+    engine.say('I am going to read the following text to you.')
+    text_format = entry.get('1.0', tk.END)
 
 def summer_time():
     from sumy.parseers.plaintext import PlaintextParser
@@ -68,8 +86,6 @@ def summer_time():
     print(summer_all)
 
 # Build Main Home Tab
-
-
 label_text_to_summarize = Label(tab_main, text='Enter text to summarize,', padx=5, pady=5)
 label_text_to_summarize.grid(row=1, column=0)
 entry = ScrolledText(tab_main, height=30)
