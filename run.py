@@ -7,14 +7,14 @@ from SummerTime import SummerTime
 # Create GUI
 # Create Window
 # Build main window
-window = tk.TK()
+window = tk.Tk()
 # Change main title here
 window.title("Textatron")
 # Change window size here
 # wide x tall
 window.geometry('700x900')
 # Change text color here
-window.config(backgrounds='black')
+window.config(background='black')
 
 # Set style of tabs
 style = ttk.Style(window)
@@ -77,7 +77,7 @@ entry.grid(row=2, column=0, columnspan=5, padx=5, pady=5)
 
 # User Action controls and events
 button_run = Button(tab_main, text="Invoke Tex-A-Tron", command=summer_time, width=22, bg='#25d366)', fg='#fff')
-button_run, grid(row=4, column=0, padx=10, pady=10)
+button_run.grid(row=4, column=0, padx=10, pady=10)
 
 # Display window for result
 output_display = ScrolledText(tab_main)
