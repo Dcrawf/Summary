@@ -47,26 +47,26 @@ def erase_input():
 def erase_output():
     output_display.delete('1.0', END)
 
-def speak_it():
-
-    engine = pyttax3.init()
-    #bcode Set Voice
-    #Voice IDS pulled from engine.getProperty('voices)
-    #These will be system specific
-    en_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0"
-
-    #use female english voice
-    engine.setProperty('voice', en_voice_id)
-    engine.say('Hello, This is my voice.')
-    #bcode END set voice
-    rate = engine.getProperty('rate')
-    #This decreases the speed of speech by 50%
-    engine.setProperty("rate", rate - 50)
-    engine.say('I am going to read the following text to you.')
-    text_format = entry.get('1.0', tk.END)
+# def speak_it():
+#
+#     engine = pyttax3.init()
+#     #bcode Set Voice
+#     #Voice IDS pulled from engine.getProperty('voices)
+#     #These will be system specific
+#     en_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0"
+#
+#     #use female english voice
+#     engine.setProperty('voice', en_voice_id)
+#     engine.say('Hello, This is my voice.')
+#     #bcode END set voice
+#     rate = engine.getProperty('rate')
+#     #This decreases the speed of speech by 50%
+#     engine.setProperty("rate", rate - 50)
+#     engine.say('I am going to read the following text to you.')
+#     text_format = entry.get('1.0', tk.END)
 
 def summer_time():
-    from sumy.parseers.plaintext import PlaintextParser
+    from sumy.parsers.plaintext import PlaintextParser
     from sumy.nlp.tokenizers import Tokenizer
     text_format = entry.get('1.0', tk.END)
     # We can use this parse format for all three when we use raw strings
@@ -92,7 +92,7 @@ entry = ScrolledText(tab_main, height=30)
 entry.grid(row=2, column=0, columnspan=5, padx=5, pady=5)
 
 # User Action controls and events
-button_run = Button(tab_main, text="Invoke Tex-A-Tron", command=summer_time, width=22, bg='#25d366)', fg='#fff')
+button_run = Button(tab_main, text="Invoke Tex-A-Tron", command=summer_time , width=22, bg='#25d366)', fg='#fff')
 button_run.grid(row=4, column=0, padx=10, pady=10)
 
 # Display window for result
