@@ -34,3 +34,5 @@ class SummerTime:
         for sentence in summarization_result:
             print(sentence)
         print("\nEnd Raw summary from Luhn\n")
+        # Return summer Result
+        return summarization_result

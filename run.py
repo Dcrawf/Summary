@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.scrolledtext import *
 from SummerTime import SummerTime
-import pyttsx3
+#import pyttsx3
 
 # Create GUI
 # Create Window
