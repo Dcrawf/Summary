@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.scrolledtext import *
 from SummerTime import SummerTime
-#import pyttsx3
+import pyttsx3
 
 # Create GUI
 # Create Window
@@ -47,23 +47,55 @@ def erase_input():
 def erase_output():
     output_display.delete('1.0', END)
 
-# def speak_it():
-#
-#     engine = pyttax3.init()
-#     #bcode Set Voice
-#     #Voice IDS pulled from engine.getProperty('voices)
-#     #These will be system specific
-#     en_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0"
-#
-#     #use female english voice
-#     engine.setProperty('voice', en_voice_id)
-#     engine.say('Hello, This is my voice.')
-#     #bcode END set voice
-#     rate = engine.getProperty('rate')
-#     #This decreases the speed of speech by 50%
-#     engine.setProperty("rate", rate - 50)
-#     engine.say('I am going to read the following text to you.')
-#     text_format = entry.get('1.0', tk.END)
+def speak_it():
+
+    engine = pyttsx3.init()
+    #bcode Set Voice
+    #Voice IDS pulled from engine.getProperty('voices)
+    #These will be system specific
+    en_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0"
+
+    #use female english voice
+    engine.setProperty('voice', en_voice_id)
+    engine.say('Hello, This is my voice.')
+    #bcode END set voice
+    rate = engine.getProperty('rate')
+    #This decreases the speed of speech by 50%
+    engine.setProperty("rate", rate - 50)
+    engine.say('I am going to read the following text to you.')
+    text_format = entry.get('1.0', tk.END)
+    engine.say(text_format)
+
+    print_voice_list(engine)
+    engine.runAndWait()
+
+def print_voice_list(engine):
+    voices = engine.getProperty('voices')
+    voice_list = []
+    for voice in voices:
+        print("Voice: ")
+        print(" - ID: %s " % voice.id)
+        print(" - Name: %s " % voice.name)
+        print(" - Languages: %s" % voice.languages)
+        print(" - Gender: %s " % voice.gender)
+        print(" - Age: %s" % voice.age)
+        voice_current = ""
+        voice_current = voice_current, + "\nVoice:\n "
+        voice_current = voice_current,  "\n - ID: ", voice.id
+        voice_current = voice_current,  "\n - Name: ", voice.name
+        voice_current = voice_current,  "\n - Languages: ", voice.languages
+        voice_current = voice_current,  "\n - Gender: ", voice.gender
+        voice_current = voice_current,  "\n - Age: ", voice.age
+        voice_list.append(voice_current)
+        print(voice_list)
+        output_display.insert(tk.END, "test")
+
+
+
+
+
+
+
 
 def summer_time():
     from sumy.parsers.plaintext import PlaintextParser
